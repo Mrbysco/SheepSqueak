@@ -1,17 +1,14 @@
 package com.mrbysco.sheepsqueak;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
-import net.minecraftforge.event.entity.PlaySoundAtEntityEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -31,20 +28,16 @@ public class SheepSqueak {
     public SheepSqueak() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         SOUND_EVENTS.register(eventBus);
+
+        MinecraftForge.EVENT_BUS.addListener(this::playSoundAtEntityEvent);
     }
 
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.FORGE)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public static void playSoundAtEntityEvent(LivingHurtEvent event) {
-            DamageSource source = event.getSource();
-            Entity damageSource = source.getTrueSource();
-            LivingEntity hurtEntity = event.getEntityLiving();
-            if(hurtEntity instanceof SheepEntity) {
-                SheepEntity sheep = (SheepEntity)hurtEntity;
-                if(!sheep.getSheared()) {
-                    sheep.world.playSound((PlayerEntity)null, sheep.getPosition(), SheepSqueak.SQUEAK.get(), SoundCategory.NEUTRAL, 1.0F, 1.0F);
-                }
+    public void playSoundAtEntityEvent(LivingHurtEvent event) {
+        LivingEntity hurtEntity = event.getEntityLiving();
+        if(hurtEntity instanceof SheepEntity) {
+            SheepEntity sheep = (SheepEntity)hurtEntity;
+            if(!sheep.getSheared()) {
+                sheep.world.playSound((PlayerEntity)null, sheep.getPosition(), SheepSqueak.SQUEAK.get(), SoundCategory.NEUTRAL, 1.0F, 1.0F);
             }
         }
     }

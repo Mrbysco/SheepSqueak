@@ -1,13 +1,13 @@
 modLoader="javafml"
-loaderVersion="[32,)"
-#issueTrackerURL=""
-license="mit"
+loaderVersion="[33,)"
+issueTrackerURL="https://github.com/Mrbysco/SheepSqueak/issues"
+license="MIT"
 
 [[mods]]
 modId="sheepsqueak"
 version="${file.jarVersion}"
 displayName="Sheep Squeak"
-#displayURL=""
+displayURL="https://www.curseforge.com/minecraft/mc-mods/sheep-squeak"
 authors="ShyNieke, Mrbysco"
 description='''
 Squeaky squeak
