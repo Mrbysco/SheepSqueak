@@ -1,0 +1,14 @@
+modLoader="javafml"
+loaderVersion="[32,)"
+#issueTrackerURL=""
+license="mit"
+
+[[mods]]
+modId="sheepsqueak"
+version="${file.jarVersion}"
+displayName="Sheep Squeak"
+#displayURL=""
+authors="ShyNieke, Mrbysco"
+description='''
+Squeaky squeak
+'''

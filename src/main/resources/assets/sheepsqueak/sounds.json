@@ -1,0 +1,10 @@
+{
+  "squeak" : {
+    "category" : "neutral",
+    "sounds": [
+      {
+        "name" : "sheepsqueak:squeak"
+      }
+    ]
+  }
+}
