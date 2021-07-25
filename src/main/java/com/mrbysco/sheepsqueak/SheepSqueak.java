@@ -1,17 +1,17 @@
 package com.mrbysco.sheepsqueak;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.SheepEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
@@ -34,10 +34,9 @@ public class SheepSqueak {
 
     public void playSoundAtEntityEvent(LivingHurtEvent event) {
         LivingEntity hurtEntity = event.getEntityLiving();
-        if(hurtEntity instanceof SheepEntity) {
-            SheepEntity sheep = (SheepEntity)hurtEntity;
-            if(!sheep.getSheared()) {
-                sheep.world.playSound((PlayerEntity)null, sheep.getPosition(), SheepSqueak.SQUEAK.get(), SoundCategory.NEUTRAL, 1.0F, 1.0F);
+        if(hurtEntity instanceof Sheep sheep) {
+            if(!sheep.isSheared()) {
+                sheep.level.playSound((Player)null, sheep.blockPosition(), SheepSqueak.SQUEAK.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
             }
         }
     }
