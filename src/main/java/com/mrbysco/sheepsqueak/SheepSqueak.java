@@ -36,8 +36,8 @@ public class SheepSqueak {
         LivingEntity hurtEntity = event.getEntityLiving();
         if(hurtEntity instanceof SheepEntity) {
             SheepEntity sheep = (SheepEntity)hurtEntity;
-            if(!sheep.getSheared()) {
-                sheep.world.playSound((PlayerEntity)null, sheep.getPosition(), SheepSqueak.SQUEAK.get(), SoundCategory.NEUTRAL, 1.0F, 1.0F);
+            if(!sheep.isSheared()) {
+                sheep.level.playSound((PlayerEntity)null, sheep.blockPosition(), SheepSqueak.SQUEAK.get(), SoundCategory.NEUTRAL, 1.0F, 1.0F);
             }
         }
     }
