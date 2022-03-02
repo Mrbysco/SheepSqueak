@@ -11,16 +11,13 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod(SheepSqueak.MOD_ID)
 public class SheepSqueak {
     public static final String MOD_ID = "sheepsqueak";
-    private static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MOD_ID);
     public static final RegistryObject<SoundEvent> SQUEAK = SOUND_EVENTS.register("squeak", () -> new SoundEvent(new ResourceLocation(MOD_ID, "squeak")));
