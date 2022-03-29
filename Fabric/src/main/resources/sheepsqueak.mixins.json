@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8.4",
+  "package": "com.mrbysco.sheepsqueak.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+  ],
+  "client": [
+	"LivingEntityMixin"
+  ],
+  "injectors": {
+	"defaultRequire": 1
+  }
+}

@@ -15,24 +15,22 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-@Mod(SheepSqueak.MOD_ID)
-public class SheepSqueak {
-    public static final String MOD_ID = "sheepsqueak";
+@Mod(Constants.MOD_ID)
+public class SheepSqueakForge {
+	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Constants.MOD_ID);
+	public static final RegistryObject<SoundEvent> SQUEAK = SOUND_EVENTS.register("squeak", () -> new SoundEvent(new ResourceLocation(Constants.MOD_ID, "squeak")));
 
-    public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MOD_ID);
-    public static final RegistryObject<SoundEvent> SQUEAK = SOUND_EVENTS.register("squeak", () -> new SoundEvent(new ResourceLocation(MOD_ID, "squeak")));
-
-    public SheepSqueak() {
+	public SheepSqueakForge() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         SOUND_EVENTS.register(eventBus);
 
-        MinecraftForge.EVENT_BUS.addListener(this::playSoundAtEntityEvent);
-    }
+		MinecraftForge.EVENT_BUS.addListener(this::onLivingHurt);
+	}
 
-    public void playSoundAtEntityEvent(LivingHurtEvent event) {
-        LivingEntity hurtEntity = event.getEntityLiving();
-        if(hurtEntity instanceof Sheep sheep && !sheep.isSheared()) {
-            sheep.level.playSound((Player)null, sheep.blockPosition(), SheepSqueak.SQUEAK.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
-        }
-    }
+	private void onLivingHurt(LivingHurtEvent event) {
+		LivingEntity hurtEntity = event.getEntityLiving();
+		if (hurtEntity instanceof Sheep sheep && !sheep.isSheared()) {
+			sheep.level.playSound((Player) null, sheep.blockPosition(), SQUEAK.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
+		}
+	}
 }
