@@ -2,7 +2,6 @@ package com.mrbysco.sheepsqueak;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -26,8 +25,7 @@ public class SheepSqueakForge {
 	}
 
 	private void onLivingHurt(LivingHurtEvent event) {
-		LivingEntity hurtEntity = event.getEntityLiving();
-		if (hurtEntity instanceof Sheep sheep && !sheep.isSheared()) {
+		if (event.getEntity() instanceof Sheep sheep && !sheep.isSheared()) {
 			CommonClass.playSqueak(sheep, SQUEAK.get());
 		}
 	}
