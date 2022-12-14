@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.11-SNAPSHOT'
+    id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'maven-publish'
     id 'idea'
 }
@@ -44,12 +44,6 @@ processResources {
 
 tasks.withType(JavaCompile) {
     source(project(":Common").sourceSets.main.allSource)
-}
-
-jar {
-    from("LICENSE") {
-        rename { "${it}_${mod_name}" }
-    }
 }
 
 publishing {
