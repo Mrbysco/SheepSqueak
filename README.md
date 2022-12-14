@@ -1,4 +1,5 @@
-[![build](https://github.com/Mrbysco/SheepSqueak/actions/workflows/build.yml/badge.svg)](https://github.com/Mrbysco/SheepSqueak/actions/workflows/build.yml) [![](http://cf.way2muchnoise.eu/versions/401514.svg)](https://www.curseforge.com/minecraft/mc-mods/sheep-squeak)
+[![build](https://github.com/Mrbysco/SheepSqueak/actions/workflows/build.yml/badge.svg)](https://github.com/Mrbysco/SheepSqueak/actions/workflows/build.yml) 
+[![](http://cf.way2muchnoise.eu/versions/401514.svg)](https://www.curseforge.com/minecraft/mc-mods/sheep-squeak)
 
 # Sheep Squeak #
 
