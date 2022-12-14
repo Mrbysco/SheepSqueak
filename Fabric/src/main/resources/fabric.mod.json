@@ -5,31 +5,31 @@
   "name": "Sheep Squeak",
   "description": "Squeaky squeak",
   "authors": [
-	"ShyNieke, Mrbysco"
+    "ShyNieke, Mrbysco"
   ],
   "contact": {
-	"homepage": "https://www.curseforge.com/minecraft/mc-mods/sheep-squeak",
-	"sources": "https://github.com/Mrbysco/SheepSqueak",
-	"issues": "https://github.com/Mrbysco/SheepSqueak/issues"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/sheep-squeak",
+    "sources": "https://github.com/Mrbysco/SheepSqueak",
+    "issues": "https://github.com/Mrbysco/SheepSqueak/issues"
   },
   "license": "MIT",
   "icon": "assets/modid/icon.png",
   "environment": "*",
   "entrypoints": {
-	"main": [
-	  "com.mrbysco.sheepsqueak.SheepSqueakFabric"
-	]
+    "main": [
+      "com.mrbysco.sheepsqueak.SheepSqueakFabric"
+    ]
   },
   "mixins": [
-	"sheepsqueak.mixins.json"
+    "sheepsqueak.mixins.json"
   ],
   "depends": {
-	"fabricloader": ">=0.14",
-	"fabric": "*",
-	"minecraft": "1.19.x",
-	"java": ">=17"
+    "fabricloader": ">=0.14",
+    "fabric": "*",
+    "minecraft": ">1.19.3",
+    "java": ">=17"
   },
   "suggests": {
-	"another-mod": "*"
+    "another-mod": "*"
   }
 }

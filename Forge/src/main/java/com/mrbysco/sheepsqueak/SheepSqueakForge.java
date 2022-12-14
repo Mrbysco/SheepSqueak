@@ -15,7 +15,8 @@ import net.minecraftforge.registries.RegistryObject;
 @Mod(Constants.MOD_ID)
 public class SheepSqueakForge {
 	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Constants.MOD_ID);
-	public static final RegistryObject<SoundEvent> SQUEAK = SOUND_EVENTS.register("squeak", () -> new SoundEvent(new ResourceLocation(Constants.MOD_ID, "squeak")));
+	public static final RegistryObject<SoundEvent> SQUEAK = SOUND_EVENTS.register("squeak", () ->
+			SoundEvent.createVariableRangeEvent(new ResourceLocation(Constants.MOD_ID, "squeak")));
 
 	public SheepSqueakForge() {
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
