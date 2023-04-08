@@ -16,7 +16,7 @@ public class LivingEntityMixin {
 					target = "Lnet/minecraft/world/entity/LivingEntity;getDamageAfterArmorAbsorb(Lnet/minecraft/world/damagesource/DamageSource;F)F",
 					shift = Shift.BEFORE,
 					ordinal = 0))
-	private void sheepsqueak_postTick(CallbackInfo ci) {
+	private void sheepsqueak_actuallyHurt(CallbackInfo ci) {
 		LivingHurtCallback.EVENT.invoker().onHurt((LivingEntity) (Object) this);
 	}
 }
