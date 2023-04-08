@@ -6,7 +6,7 @@ plugins {
     id 'com.modrinth.minotaur' version "2.+"
 }
 
-archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
+archivesBaseName = "${archive_name}-fabric-${minecraft_version}"
 
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
