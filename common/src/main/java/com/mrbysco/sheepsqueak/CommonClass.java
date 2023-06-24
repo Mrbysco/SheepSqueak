@@ -12,6 +12,6 @@ public class CommonClass {
 	}
 
 	public static void playSqueak(LivingEntity entity) {
-		entity.level.playSound((Player) null, entity.blockPosition(), ModSounds.SQUEAK.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
+		entity.level().playSound((Player) null, entity.blockPosition(), ModSounds.SQUEAK.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
 	}
 }
