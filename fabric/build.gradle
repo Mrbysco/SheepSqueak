@@ -8,7 +8,7 @@ plugins {
 }
 
 base {
-    archivesName = "${mod_name}-fabric-${minecraft_version}"
+    archivesName = "${archive_name}-fabric-${minecraft_version}"
 }
 
 dependencies {

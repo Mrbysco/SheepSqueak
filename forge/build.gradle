@@ -7,7 +7,7 @@ plugins {
 }
 
 base {
-    archivesName = "${mod_name}-forge-${minecraft_version}"
+    archivesName = "${archive_name}-forge-${minecraft_version}"
 }
 
 minecraft {
