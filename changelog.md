@@ -1,1 +1,1 @@
-* Initial update to 1.21
+* Update the NeoForge and Fabric version the mod is built against
