@@ -1,1 +1,1 @@
-* Update the NeoForge and Fabric version the mod is built against
+* Update to 1.21.4
