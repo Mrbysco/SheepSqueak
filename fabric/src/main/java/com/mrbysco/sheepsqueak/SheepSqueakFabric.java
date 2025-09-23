@@ -3,7 +3,7 @@ package com.mrbysco.sheepsqueak;
 import com.mrbysco.sheepsqueak.callback.LivingHurtCallback;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.animal.sheep.Sheep;
 
 public class SheepSqueakFabric implements ModInitializer {
 
