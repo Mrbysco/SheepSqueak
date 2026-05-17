@@ -1,8 +1,7 @@
 package com.mrbysco.sheepsqueak;
 
-import com.mrbysco.sheepsqueak.callback.LivingHurtCallback;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.world.InteractionResult;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.minecraft.world.entity.animal.sheep.Sheep;
 
 public class SheepSqueakFabric implements ModInitializer {
@@ -11,11 +10,11 @@ public class SheepSqueakFabric implements ModInitializer {
 	public void onInitialize() {
 		CommonClass.init();
 
-		LivingHurtCallback.EVENT.register((hurtEntity) -> {
+		ServerLivingEntityEvents.AFTER_DAMAGE.register((hurtEntity, source,
+		                                                baseDamageTaken, damageTaken, blocked) -> {
 			if (hurtEntity instanceof Sheep sheep && !sheep.isSheared()) {
 				CommonClass.playSqueak(sheep);
 			}
-			return InteractionResult.PASS;
 		});
 	}
 }

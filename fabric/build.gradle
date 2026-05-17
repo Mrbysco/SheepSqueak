@@ -2,20 +2,28 @@ plugins {
     id 'java'
     id 'idea'
     id 'maven-publish'
-    id 'fabric-loom' version '1.15-SNAPSHOT'
+    id "net.fabricmc.fabric-loom" version '1.16-SNAPSHOT'
     id 'net.darkhax.curseforgegradle'
     id 'com.modrinth.minotaur'
 }
 
 base {
-    archivesName = "${archive_name}-fabric-${minecraft_version}"
+    archivesName = "${mod_name}-fabric-${minecraft_version}"
+}
+
+repositories {
+    maven {
+        url "https://maven.terraformersmc.com/"
+        content {
+            includeGroup "com.terraformersmc"
+        }
+    }
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation project(":common")
 }
 
@@ -23,9 +31,7 @@ loom {
     if (project(":common").file("src/main/resources/${mod_id}.accesswidener").exists()) {
         accessWidenerPath.set(project(":common").file("src/main/resources/${mod_id}.accesswidener"))
     }
-    mixin {
-        defaultRefmapName.set("${mod_id}.refmap.json")
-    }
+
     runs {
         client {
             client()
@@ -83,12 +89,12 @@ if (System.getenv().CURSEFORGE_KEY) {
     task curseforge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
         apiToken = System.getenv().CURSEFORGE_KEY
 
-        def mainFile = upload(project.curseforge_id, remapJar)
+        def mainFile = upload(project.curseforge_id, jar)
         mainFile.releaseType = 'beta'
         mainFile.addModLoader "Fabric"
         mainFile.addGameVersion "${minecraft_version}"
-        mainFile.addJavaVersion "Java 21"
-        mainFile.addEnvironment('Server', 'Client')
+        mainFile.addJavaVersion "Java 25"
+        mainFile.addEnvironment('Client', 'Server')
 
         mainFile.changelog = file("$project.rootDir/changelog.md")
         mainFile.changelogType = 'markdown'
@@ -96,6 +102,7 @@ if (System.getenv().CURSEFORGE_KEY) {
         mainFile.addRequirement("fabric-api")
     }
 }
+
 
 if (System.getenv().MODRINTH_KEY) {
     String fileContents = file("$project.rootDir/changelog.md").text
@@ -105,7 +112,7 @@ if (System.getenv().MODRINTH_KEY) {
         versionType = "beta"
         versionName = "${mod_name} ${minecraft_version}"
         versionNumber = project.version
-        uploadFile = remapJar
+        uploadFile = jar
         changelog = fileContents
         gameVersions = ["${minecraft_version}"]
         loaders = ["fabric"]
